@@ -111,6 +111,9 @@
     "ocramius/proxy-manager": {
         "version": "2.2.3"
     },
+    "paragonie/sodium_compat": {
+        "version": "v1.11.1"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.0.0"
     },
@@ -131,6 +134,15 @@
     },
     "psr/log": {
         "version": "1.1.0"
+    },
+    "pusher/pusher-php-server": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "8dd3ea817217453e14ab596317177465211e01d2"
+        }
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
@@ -498,6 +510,24 @@
             "version": "3.3",
             "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
         }
+    },
+    "symfony/webpack-encore-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "d3b160b9799c91cbfc3df6f018c795f3bf88698a"
+        },
+        "files": [
+            "./assets/css/app.css",
+            "./assets/js/app.js",
+            "./config/packages/assets.yaml",
+            "./config/packages/prod/webpack_encore.yaml",
+            "./config/packages/webpack_encore.yaml",
+            "./package.json",
+            "./webpack.config.js"
+        ]
     },
     "symfony/yaml": {
         "version": "v4.3.4"

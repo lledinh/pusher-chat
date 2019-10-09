@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="form-login" class="flex-wrap">
+        <fieldset>
+            <form id="login-form" action="/login_check" method="post">
+
+                <input type="radio" name="rg" id="sign-in" value="sign-in" checked/>
+                <input type="radio" name="rg" id="sign-up" value="sign-up"/>
+                <input type="radio" name="rg" id="reset" value="reset"/>
+
+                <label for="sign-in">Sign in</label>
+                <label for="sign-up">Sign up</label>
+                <label for="reset">Reset</label>
+
+                <input class="sign-up" name="name" type="text" placeholder="Name" />
+                <input class="sign-up sign-in reset" name="email" type="email" placeholder="Email" />
+                <input class="sign-up sign-in" name="password" type="password" placeholder ="Password" />
+                <input class="sign-up" name="repeat_password" type="password" placeholder ="Repeat Password" />
+                <button name="submit" type="submit">Submit</button>
+
+            </form>
+
+        </fieldset>
+
+
+        <div class="container-login-error">
+            {% if not errorEmail is empty %}
+                <div class="alert alert-warning" role="alert">
+                    {{ errorEmail }}
+                </div>
+            {% endif %}
+
+            {% if not errorPassword is empty %}
+                <div class="alert alert-warning" role="alert">
+                    {{ errorPassword }}
+                </div>
+            {% endif %}
+
+            {% if not errorRepeatPassword is empty %}
+                <div class="alert alert-warning" role="alert">
+                    {{ errorRepeatPassword }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row height100">
+{#        <div class="col-sm-2" id="sidebar-action">#}
+{#            <div class="action">#}
+{#                <button id="button-join" class="button-style-1">Join</button>#}
+{#                <input id="input-button-join" type="text">#}
+{#            </div>#}
+{#            <div class="action">#}
+{#                <button id="button-whisper" class="button-style-1">Whisper</button>#}
+{#                <input id="input-button-join" type="text">#}
+{#            </div>#}
+{#            <div class="action">#}
+{#                <button id="button-add-friend" class="button-style-1">Add friend</button>#}
+{#                <input id="input-button-join" type="text">#}
+{#            </div>#}
+
+{#        </div>#}
+
+        <div class="col-sm-2" id="sidebar-users">
+            <div id="salon-list">
+                Liste des salons
+
+                <ul>
+                    <li>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="user-list">
+                Liste des utilisateurs
+
+                <ul>
+                    <li>
+                        <div>
+                            <link rel="stylesheet" href="">
+                            <img class="avatar-user round-image" src="/images/cat1.jpg">
+                        </div>
+                        <div>
+                            <div>
+                                Meo Cho
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="friend-list">
+                Liste d'amis
+
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-sm-8" id="panel-content">
+            <h1 id="salon-title">
+                Salon #General
+            </h1>
+            <ul id="message-list">
+                <li class="message">
+                    <div class="message-avatar">
+                        <img class="round-image" src="/images/cat2.jpg">
+                    </div>
+                    <div class="message-text">
+                        <div class="message-text-author">
+                            Meo Cho
+                        </div>
+                        <div class="message-text-content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur eros urna, eu egestas turpis gravida et. Aliquam id porta erat. Duis sollicitudin urna id leo consequat rutrum. Ut condimentum mattis odio sit amet maximus. Nulla vel viverra mauris, vitae porttitor leo. Sed porta ac velit eu molestie. Aliquam vulputate libero eget arcu cursus vestibulum. Maecenas bibendum diam sed erat sagittis, a hendrerit mauris pellentesque. Praesent venenatis condimentum lacus, eu bibendum risus. Morbi ultrices risus ut viverra condimentum.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
