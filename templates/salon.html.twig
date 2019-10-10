@@ -1,0 +1,306 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="content clearfix">
+        <div class="people-list" id="people-list">
+            <div class="search">
+                <input type="text" placeholder="search">
+                <i class="fa fa-search"></i>
+            </div>
+            <ul class="list-channels" id="list-channels">
+                {% for channel in channels %}
+                    <li class="clearfix" data-id="{{ channel.id }}">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar">
+                        <div class="about">
+                            <div class="name">{{ channel.name }}</div>
+                            <div class="status">
+                                <i class="fa fa-circle online"></i> {{ channelsCount[channel.id] }} online
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="chat">
+            <div class="chat-header clearfix">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar">
+                <div class="chat-about">
+                    <div class="chat-with">Chat with Vincent Porter</div>
+                    <div class="chat-num-messages">already 1 902 messages</div>
+                </div>
+                <i class="fa fa-star"></i>
+            </div>
+            <div class="chat-history">
+                <ul>
+                    <li class="clearfix">
+                        <div class="message-data align-right">
+                            <span class="message-data-time">10:10 AM, Today</span> &nbsp; &nbsp;
+                            <span class="message-data-name">Olia</span> <i class="fa fa-circle me"></i>
+                        </div>
+                        <div class="message other-message float-right">
+                            Hi Vincent, how are you? How is the project coming along?
+                        </div>
+                    </li>
+                    <li>
+                        <div class="message-data">
+                            <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+                            <span class="message-data-time">10:12 AM, Today</span>
+                        </div>
+                        <div class="message my-message">
+                            Are we meeting today? Project has been already finished and I have results to show you.
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="message-data align-right">
+                            <span class="message-data-time">10:14 AM, Today</span> &nbsp; &nbsp;
+                            <span class="message-data-name">Olia</span> <i class="fa fa-circle me"></i>
+                        </div>
+                        <div class="message other-message float-right">
+                            Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
+                        </div>
+                    </li>
+                    <li>
+                        <div class="message-data">
+                            <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+                            <span class="message-data-time">10:20 AM, Today</span>
+                        </div>
+                        <div class="message my-message">
+                            Actually everything was fine. I'm very excited to show this to our team.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="message-data">
+                            <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+                            <span class="message-data-time">10:31 AM, Today</span>
+                        </div>
+                        <i class="fa fa-circle online"></i>
+                        <i class="fa fa-circle online" style="color: #AED2A6"></i>
+                        <i class="fa fa-circle online" style="color:#DAE9DA"></i>
+                    </li>
+
+                    <li class="clearfix">
+                        <div class="message-data align-right">
+                            <span class="message-data-time">16:44, Today</span> &nbsp; &nbsp;
+                            <span class="message-data-name">Olia</span> <i class="fa fa-circle me"></i>
+                        </div>
+                        <div class="message other-message float-right"></div>
+                    </li>
+
+                    <li>
+                        <div class="message-data">
+                            <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+                            <span class="message-data-time">16:44, Today</span>
+                        </div>
+                        <div class="message my-message">
+                            An SQL query enters a bar, approaches two tables and asks: "May I join you?"
+                        </div>
+                    </li>
+
+                    <li class="clearfix">
+                        <div class="message-data align-right">
+                            <span class="message-data-time">16:44, Today</span> &nbsp; &nbsp;
+                            <span class="message-data-name">Olia</span> <i class="fa fa-circle me"></i>
+                        </div>
+                        <div class="message other-message float-right">
+                            ccc
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="message-data">
+                            <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+                            <span class="message-data-time">16:44, Today</span>
+                        </div>
+                        <div class="message my-message">
+                            Why did the web developer leave the restaurant? Because of the table layout.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="chat-message clearfix">
+            <textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="3"></textarea>
+            <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
+            <i class="fa fa-file-image-o"></i>
+            <button>Send</button>
+        </div>
+
+    </div>
+{#    #}
+{#    <div class="row height100 margin0">#}
+{#        <div class="col-sm-2" id="sidebar-action">#}
+{#            <div class="action">#}
+{#                <button id="button-join" class="button-style-1">Join</button>#}
+{#                <input id="input-button-join" type="text">#}
+{#            </div>#}
+{#            <div class="action">#}
+{#                <button id="button-whisper" class="button-style-1">Whisper</button>#}
+{#                <input id="input-button-join" type="text">#}
+{#            </div>#}
+{#            <div class="action">#}
+{#                <button id="button-add-friend" class="button-style-1">Add friend</button>#}
+{#                <input id="input-button-join" type="text">#}
+{#            </div>#}
+
+{#        </div>#}
+
+{#        <div class="col-sm-2" id="sidebar-users">#}
+{#            <ul class="list"><li class="clearfix">#}
+{#                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar">#}
+{#                    <div class="about">#}
+{#                        <div class="name">Vincent Porter</div>#}
+{#                        <div class="status">#}
+{#                            <i class="fa fa-circle online"></i> online#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </li><li class="clearfix">#}
+{#                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg" alt="avatar">#}
+{#                    <div class="about">#}
+{#                        <div class="name">Aiden Chavez</div>#}
+{#                        <div class="status">#}
+{#                            <i class="fa fa-circle offline"></i> left 7 mins ago#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </li><li class="clearfix">#}
+{#                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_03.jpg" alt="avatar">#}
+{#                    <div class="about">#}
+{#                        <div class="name">Mike Thomas</div>#}
+{#                        <div class="status">#}
+{#                            <i class="fa fa-circle online"></i> online#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </li><li class="clearfix">#}
+{#                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_04.jpg" alt="avatar">#}
+{#                    <div class="about">#}
+{#                        <div class="name">Erica Hughes</div>#}
+{#                        <div class="status">#}
+{#                            <i class="fa fa-circle online"></i> online#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </li><li class="clearfix">#}
+{#                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_05.jpg" alt="avatar">#}
+{#                    <div class="about">#}
+{#                        <div class="name">Ginger Johnston</div>#}
+{#                        <div class="status">#}
+{#                            <i class="fa fa-circle online"></i> online#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </li><li class="clearfix">#}
+{#                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_06.jpg" alt="avatar">#}
+{#                    <div class="about">#}
+{#                        <div class="name">Tracy Carpenter</div>#}
+{#                        <div class="status">#}
+{#                            <i class="fa fa-circle offline"></i> left 30 mins ago#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </li><li class="clearfix">#}
+{#                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_07.jpg" alt="avatar">#}
+{#                    <div class="about">#}
+{#                        <div class="name">Christian Kelly</div>#}
+{#                        <div class="status">#}
+{#                            <i class="fa fa-circle offline"></i> left 10 hours ago#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </li><li class="clearfix">#}
+{#                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_08.jpg" alt="avatar">#}
+{#                    <div class="about">#}
+{#                        <div class="name">Monica Ward</div>#}
+{#                        <div class="status">#}
+{#                            <i class="fa fa-circle online"></i> online#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </li><li class="clearfix">#}
+{#                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_09.jpg" alt="avatar">#}
+{#                    <div class="about">#}
+{#                        <div class="name">Dean Henry</div>#}
+{#                        <div class="status">#}
+{#                            <i class="fa fa-circle offline"></i> offline since Oct 28#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </li><li class="clearfix">#}
+{#                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_10.jpg" alt="avatar">#}
+{#                    <div class="about">#}
+{#                        <div class="name">Peyton Mckinney</div>#}
+{#                        <div class="status">#}
+{#                            <i class="fa fa-circle online"></i> online#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </li></ul>#}
+{#            <div id="salon-list">#}
+{#                Liste des salons#}
+
+{#                <ul>#}
+{#                    <li>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+
+{#            <div id="user-list">#}
+{#                Liste des utilisateurs#}
+
+{#                <ul>#}
+{#                    <li>#}
+{#                        <div>#}
+{#                            <link rel="stylesheet" href="">#}
+{#                            <img class="avatar-user round-image" src="/images/cat1.jpg">#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <div>#}
+{#                                Meo Cho#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+
+{#            <div id="friend-list">#}
+{#                Liste d'amis#}
+
+{#                <ul>#}
+
+{#                </ul>#}
+{#            </div>#}
+{#        </div>#}
+
+{#        <div class="col-sm-10" id="panel-content">#}
+{#            <h1 id="salon-title">#}
+{#                Salon #General#}
+{#            </h1>#}
+{#            <ul id="message-list">#}
+{#                <li class="message">#}
+{#                    <div class="message-avatar">#}
+{#                        <img class="round-image" src="/images/cat2.jpg">#}
+{#                    </div>#}
+{#                    <div>#}
+{#                        <div class="message-text">#}
+{#                            <div class="message-text-author">#}
+{#                                Meo Cho#}
+{#                            </div>#}
+{#                            <div class="message-text-content">#}
+{#                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur eros urna, eu egestas turpis gravida et. Aliquam id porta erat. Duis sollicitudin urna id leo consequat rutrum. Ut condimentum mattis odio sit amet maximus. Nulla vel viverra mauris, vitae porttitor leo. Sed porta ac velit eu molestie. Aliquam vulputate libero eget arcu cursus vestibulum. Maecenas bibendum diam sed erat sagittis, a hendrerit mauris pellentesque. Praesent venenatis condimentum lacus, eu bibendum risus. Morbi ultrices risus ut viverra condimentum.#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="message-text-timestamp">#}
+{#                            at 12:00#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </li>#}
+{#            </ul>#}
+{#        </div>#}
+{#    </div>#}
+
+    {% verbatim %}
+    <script id="channel-template" type="text/x-handlebars-template">
+        <li class="clearfix">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar">
+            <div class="about">
+                <div class="name">{{ title }}</div>
+                <div class="status">
+                    <i class="fa fa-circle online"></i> {{ nb }} online
+                </div>
+            </div>
+        </li>
+    </script>
+    {% endverbatim  %}
+{% endblock %}

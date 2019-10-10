@@ -24,15 +24,12 @@ console.log("Init");
 
 let lastChannelName = null;
 
+var source;
+var template;
+
 function joinMainChannels() {
     // Get  main channels
     console.log("joinMainChannels");
-    let channels = getGeneralChannels();
-
-    channels.forEach((channel, index) => {
-        console.log("Adding channel " + channel);
-        $("#salon-list ul").append("<li><button data-name=\"" + channel + "\" class='button-style-1'>" + channel + "</button></li>")
-    });
 
     $("#salon-list ul li button").each(function (index) {
         $(this).click(function() {
@@ -100,6 +97,11 @@ function addMessage(messageType) {
 
 
 $(document).ready(function () {
+    source   = document.getElementById("channel-template").innerHTML;
+    template = Handlebars.compile(source);
+
+    console.log("template " + template);
+
     $("#button-join").click(function () {
         let channelName = $("#input-button-join").val();
 

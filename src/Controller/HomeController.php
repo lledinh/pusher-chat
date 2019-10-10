@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Services\ChatChannelCounter;
 use Psr\Log\LoggerInterface;
 use Pusher\Pusher;
 use Pusher\PusherException;
@@ -21,11 +22,13 @@ class HomeController extends AbstractController
     private $session;
     private $logger;
     private $pusher;
+    private $channelCounter;
 
-    public function __construct(SessionInterface $session, LoggerInterface $logger)
+    public function __construct(SessionInterface $session, LoggerInterface $logger, ChatChannelCounter $channelCounter)
     {
         $this->session = $session;
         $this->logger = $logger;
+        $this->channelCounter = $channelCounter;
         try {
             $this->pusher = new Pusher("f63a595c360996836b72", "c0f550d0afeef0acdf9c", "873980", array('cluster' => 'eu'));
         } catch (PusherException $e) {
@@ -33,11 +36,12 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/", name="index")
+     * @Route("/salon", name="salon")
      * @param Request $request
      * @return Response
      */
     public function index(Request $request) {
+
         $user = $this->session->get('user', null);
 
         if (!empty($user)) {
@@ -49,10 +53,12 @@ class HomeController extends AbstractController
             $presenceData = array('name' => '', 'email' => '');
         }
 
-        return $this->render('index.html.twig', [
-            'user_id' => $userID,
-            'name' => $presenceData['name'],
-            'email' => $presenceData['email']
+        $channels = $this->channelCounter->getDefaultsChannels();
+        $channelsCount = $this->channelCounter->getChannelsCounts();
+
+        return $this->render('salon.html.twig', [
+            'channels' => $channels,
+            'channelsCount' => $channelsCount
         ]);
     }
 
@@ -81,6 +87,15 @@ class HomeController extends AbstractController
         }
 
         return new Response($res);
+    }
+
+    /**
+     * @Route("/connect-channel", name="connect-channel")
+     * @param Request $request
+     * @return Response
+     */
+    public function connect(Request $request) {
+
     }
 
     /**
